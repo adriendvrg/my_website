@@ -84,7 +84,7 @@ params:
       - image: lbs.jpg
         subtitle: My Past Experiences
         title: About Me
-        url: blogs/aliquam
+        url: blogs/about_me
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
         title: Risk Return of DJIA Industrial Average
