@@ -82,8 +82,8 @@ params:
     enable: yes
     showcase:
       - image: lbs.jpg
-        subtitle: About Me
-        title: Biography
+        subtitle: My Past Experiences
+        title: About Me
         url: blogs/aliquam
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
