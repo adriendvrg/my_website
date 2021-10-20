@@ -10,3 +10,14 @@ keywords: ""
 slug: about_me
 title: About Me
 ---
+MY PAST EXPERIENCES
+
+My name is Adrien Duverger and I come from [*Paris*](https://www.paris.fr/) in *France. Prior to attending the MFA at LBS I completed my undergraduate studies in Finance at Neoma  Business School, *Reims*. I have also had the opportunity to do several internships in Finance:
+
+* Abn Amro Investment Solutions in *Paris*
+* TCW in *Ne York*
+* Goldman Sachs in *London* 
+
+After LBS, I will start working at Goldman Sachs as an Equity Research Analyst. I think learning R could help me be more efficient at doing some repetitive tasks and data analysis.
+
+
