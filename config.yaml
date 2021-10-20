@@ -61,7 +61,7 @@ params:
   name: Your name
   navigation:
     button1:
-      - name: Get Started
+      - name: Browse
         url: blogs
     button2:
       - name: Log In
@@ -85,8 +85,8 @@ params:
         subtitle: My Past Experiences
         title: About Me
         url: blogs/about_me
-      - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
+      - image: DJ.jpg
+        subtitle: Analysis of Dow Jones Stocks using R
         title: Risk Return of DJIA Industrial Average
         url: blogs/risk_return
       - image: pic03.jpg
