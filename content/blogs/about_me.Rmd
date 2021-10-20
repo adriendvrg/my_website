@@ -12,12 +12,16 @@ title: About Me
 ---
 MY PAST EXPERIENCES
 
-My name is Adrien Duverger and I come from [*Paris*](https://www.paris.fr/) in *France. Prior to attending the MFA at LBS I completed my undergraduate studies in Finance at Neoma  Business School, *Reims*. I have also had the opportunity to do several internships in Finance:
+My name is Adrien Duverger and I come from [*Paris*](https://www.paris.fr/) in **France**. Prior to attending the MFA at LBS I completed my undergraduate studies and a Master in Finance at Neoma  Business School in *Reims*. I have also had the opportunity to do several internships in Finance:
 
-* Abn Amro Investment Solutions in *Paris*
-* TCW in *Ne York*
-* Goldman Sachs in *London* 
+* My first internship was at Abn Amro Investment Solutions in *Paris* where I was a Quantitative Strategist and Portfolio Manager Summer Intern
+* My second internship was a year-long work placement at Trust Ccompany of the West (TCW) in *New York*. There, I worked on a Relative Value portfolio as a Buy Side Equity Analyst.
+* My last internship was at Goldman Sachs in *London* during the summer 2021. I interned there as an Equity Research Summer Analyst. 
 
-After LBS, I will start working at Goldman Sachs as an Equity Research Analyst. I think learning R could help me be more efficient at doing some repetitive tasks and data analysis.
+After reading for the MFA 2022 at LBS, I will start working full time at Goldman Sachs as an Equity Research Analyst.
+
+At LBS, I also had the opportunity to join the Wine and Spirits Club to organize tastings
+
+Also, I have several hobbies including boxing, skiing, and motorbiking.
 
 
