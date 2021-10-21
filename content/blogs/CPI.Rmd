@@ -35,7 +35,7 @@ library(vroom)
 ```
 
 
-```{r, out.width="100%", results=FALSE, cache=TRUE}
+```{r include =FALSE, out.width="100%", cache=TRUE}
 url <- "https://fredaccount.stlouisfed.org/public/datalist/843"
 echo=FALSE
 defaultW <- getOption("warn") 
@@ -104,5 +104,5 @@ options(warn = defaultW)
 ```
 
 ```{r cpi, out.width="100%", cache=TRUE, echo = FALSE}
-knitr::include_graphics("CPI_components.jpg", error = FALSE)
+knitr::include_graphics("/img/CPI_components.jpg", error = FALSE)
 ```
