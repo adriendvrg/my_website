@@ -10,8 +10,6 @@ keywords: ""
 slug: CPI
 title: CPI Analysis
 ---
-
-
 # How has the CPI and its components changed over the last few years?
 
 1. We can find [CPI components at  FRED](https://fredaccount.stlouisfed.org/public/datalist/843).
