@@ -110,5 +110,3 @@ options(warn = defaultW)
 ```{r resume, out.width="100%", cache=TRUE, echo=FALSE}
 knitr::include_graphics("/img/CPI_components.jpg",error =FALSE)
 ```
-
-
