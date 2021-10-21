@@ -89,7 +89,7 @@ params:
         subtitle: Analysis of Dow Jones Stocks using R
         title: Risk Return of DJIA Industrial Average
         url: blogs/risk_return
-      - image: pic03.jpg
+      - image: CPI.jpg
         subtitle: CPI components analyis using R
         title: CPI Analysis
         url: blogs/CPI
