@@ -10,3 +10,96 @@ keywords: ""
 slug: CPI
 title: CPI Analysis
 ---
+
+
+# How has the CPI and its components changed over the last few years?
+
+
+1. We can find [CPI components at  FRED](https://fredaccount.stlouisfed.org/public/datalist/843).
+
+2. Since the data we download is an index with various starting dates, we need to calculate the yearly, or 12-month change. To do this we need to use the `lag` function, and specifically, `year_change = value/lag(value, 12) - 1`; this means we are comparing the current month's value with that 12 months ago lag(value, 12).
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(rvest) # to scrape wikipedia page
+library(kableExtra)
+library(httr)
+library(readxl)
+library(vroom)
+```
+
+
+```{r}
+url <- "https://fredaccount.stlouisfed.org/public/datalist/843"
+
+
+# get tables that exist on FRED website
+tables <- url %>% 
+  read_html() %>% 
+  html_nodes(css="table")
+
+
+# parse HTML tables into a dataframe called CPI 
+# Use purr::map() to create a list of all tables in URL
+CPI <- map(tables, . %>% 
+             html_table(fill=TRUE) %>% 
+             janitor::clean_names()) 
+
+# Convert the list to a dataframe
+CPI_df <- map_dfr(CPI, ~as.data.frame(.x)) 
+
+# Create new dataframe with the data required for the task, ie series id
+CPI_df <- CPI_df %>%
+  summarise("series_id" = series_id, "title" = title) 
+
+# Add the economics data to the dataframe starting from 2000-01-01
+CPI_df <- tidyquant::tq_get(CPI_df, get = "economic.data", from =  "2000-01-01")
+
+# Add new column with yearly change
+CPI_df <- CPI_df %>%
+    mutate(year_change = price/lag(price, 12) - 1)
+
+# Remove first 47 characters of title character string
+CPI_df$title <- CPI_df$title %>%
+  str_sub(47,-1)
+
+# Remove last 21 characters of title character string  
+CPI_df$title <- CPI_df$title %>%
+  substr(1,nchar(CPI_df$title)-21)
+
+# Change ticker to be equal to title to enjoy super easy facet wrap labeling
+CPI_df$series_id <- CPI_df$title
+
+# Visualize the CPI components in a facet
+CPI_df %>% 
+  # Group the data by the CPI component series id
+  group_by(series_id) %>%
+  # Sort the data by the yearly change of the CPI component prices
+  arrange(desc(year_change)) %>%
+  # Create a plot with the date on the x-axis and the yearly change of CPI component prices
+  ggplot(aes(date, year_change)) + 
+    # Specify the type of the graphs - point graph
+    geom_point(aes(x= date, y=year_change, colour = ifelse(year_change > 0, 'red', 'blue')), show.legend= FALSE) +
+    # Add a best fit line on the graphs
+    geom_smooth(color="grey70") +
+    # Show the graphs in a facet for each of the series id
+    facet_wrap(~series_id, scales = "free") +
+    # Add the labels for the graph and axes, as well as the caption in the bottom right
+    labs(title = 'Yearly Change of US CPI (all items) and its components', subtitle = 'YoY change being negative or positive',x="",y = 'YoY % Change', caption = "Data from St. Louis Fed FRED") +
+    # Show only the data from 2016-01-01
+    scale_x_date(limits = as.Date(c("2016-01-01","2021-01-10"))) +
+    # Show percentages on the y-axis
+    scale_y_continuous(labels=scales::percent) +
+    theme_bw()
+
+```
+
