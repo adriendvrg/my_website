@@ -47,7 +47,6 @@ tables <- url %>%
   read_html() %>% 
   html_nodes(css="table")
 
-
 # parse HTML tables into a dataframe called CPI 
 # Use purr::map() to create a list of all tables in URL
 CPI <- map(tables, . %>% 
