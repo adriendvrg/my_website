@@ -57,7 +57,7 @@ params:
       - icon: fa-linkedin
         label: LinkedIn
         url: https://www.linkedin.com/in/adrien-duverger/
-  image: finance.jpg
+  image: ''
   name: Your name
   navigation:
     button1:
