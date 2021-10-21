@@ -40,6 +40,8 @@ library(vroom)
 ```{r, out.width="100%"}
 url <- "https://fredaccount.stlouisfed.org/public/datalist/843"
 echo=FALSE
+suppressWarnings(expr, classes="warning")
+
 
 # get tables that exist on FRED website
 tables <- url %>% 

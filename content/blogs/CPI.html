@@ -22,8 +22,14 @@ title: CPI Analysis
 </ol>
 <pre class="r"><code>url &lt;- &quot;https://fredaccount.stlouisfed.org/public/datalist/843&quot;
 echo=FALSE
-
-# get tables that exist on FRED website
+suppressWarnings(expr, classes=&quot;warning&quot;)</code></pre>
+<pre><code>## function (expr) 
+## {
+##     enexpr(expr)
+## }
+## &lt;bytecode: 0x7f95091b03b8&gt;
+## &lt;environment: namespace:rlang&gt;</code></pre>
+<pre class="r"><code># get tables that exist on FRED website
 tables &lt;- url %&gt;% 
   read_html() %&gt;% 
   html_nodes(css=&quot;table&quot;)
