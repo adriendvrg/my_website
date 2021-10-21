@@ -93,13 +93,13 @@ params:
         subtitle: CPI components analyis using R
         title: CPI Analysis
         url: blogs/CPI
-      - image: pic04.jpg
+      - image: GDP.jpg
         subtitle: GDP components analysis using R
         title: GDP Analysis
-        url: blogs/ipsum
+        url: blogs/GDP
       - image: pic05.jpg
-        subtitle: Ipsum
-        title: Consequat
+        subtitle: Books
+        title: Reading List
         url: blogs/ipsum
       - image: pic06.jpg
         subtitle: Feugiat
