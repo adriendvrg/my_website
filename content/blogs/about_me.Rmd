@@ -28,4 +28,6 @@ Also, I have several hobbies including boxing, skiing, motorbiking and reading a
 
 Finally, I am also a travel enthusiast and have been to several countries including the US, Mexico, Cuba, South Africa, Croatia, Ukraine, Russia, Italy, Germany and many other European countries. 
 
-
+```{r CV, out.width="100%", cache=TRUE, echo = FALSE}
+knitr::include_graphics("/img/CV.jpg", error = FALSE)
+```
