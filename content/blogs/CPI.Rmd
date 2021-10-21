@@ -102,7 +102,6 @@ CPI_df %>%
     # Show percentages on the y-axis
     scale_y_continuous(labels=scales::percent) +
     theme_bw()
-
 options(warn = defaultW)
 
 ```
