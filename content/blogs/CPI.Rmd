@@ -104,5 +104,5 @@ options(warn = defaultW)
 ```
 
 ```{r cpi, out.width="100%", cache=TRUE}
-knitr::include_graphics("CPI_components.jpg", error =FALSE)
+knitr::include_graphics("/img/CPI_components.jpg", error =FALSE)
 ```
