@@ -22,14 +22,11 @@ title: CPI Analysis
 </ol>
 <pre class="r"><code>url &lt;- &quot;https://fredaccount.stlouisfed.org/public/datalist/843&quot;
 echo=FALSE
-suppressWarnings(expr, classes=&quot;warning&quot;)</code></pre>
-<pre><code>## function (expr) 
-## {
-##     enexpr(expr)
-## }
-## &lt;bytecode: 0x7f95091b03b8&gt;
-## &lt;environment: namespace:rlang&gt;</code></pre>
-<pre class="r"><code># get tables that exist on FRED website
+defaultW &lt;- getOption(&quot;warn&quot;) 
+options(warn = -1) 
+
+
+# get tables that exist on FRED website
 tables &lt;- url %&gt;% 
   read_html() %&gt;% 
   html_nodes(css=&quot;table&quot;)
@@ -49,160 +46,9 @@ CPI_df &lt;- CPI_df %&gt;%
   summarise(&quot;series_id&quot; = series_id, &quot;title&quot; = title) 
 
 # Add the economics data to the dataframe starting from 2000-01-01
-CPI_df &lt;- tidyquant::tq_get(CPI_df, get = &quot;economic.data&quot;, from =  &quot;2000-01-01&quot;)</code></pre>
-<pre><code>## Warning: x = &#39;NA&#39;, get = &#39;economic.data&#39;: Error in getSymbols.FRED(Symbols = NA_character_, env = &lt;environment&gt;, : Unable to import &quot;NA&quot;.
-## HTTP error 404.
-##  Removing NA.</code></pre>
-<pre><code>## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
+CPI_df &lt;- tidyquant::tq_get(CPI_df, get = &quot;economic.data&quot;, from =  &quot;2000-01-01&quot;)
 
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;
-
-## Warning: `type_convert()` only converts columns of type &#39;character&#39;.
-## - `df` has no columns of type &#39;character&#39;</code></pre>
-<pre><code>## Warning: x = &#39;NA&#39;, get = &#39;economic.data&#39;: Error in getSymbols.FRED(Symbols = NA_character_, env = &lt;environment&gt;, : Unable to import &quot;NA&quot;.
-## HTTP error 404.
-##  Removing NA.</code></pre>
-<pre class="r"><code># Add new column with yearly change
+# Add new column with yearly change
 CPI_df &lt;- CPI_df %&gt;%
     mutate(year_change = price/lag(price, 12) - 1)
 
@@ -239,7 +85,6 @@ CPI_df %&gt;%
     scale_y_continuous(labels=scales::percent) +
     theme_bw()</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 9764 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 9764 rows containing missing values (geom_point).</code></pre>
 <p><img src="/blogs/CPI_files/figure-html/unnamed-chunk-1-1.png" width="100%" /></p>
+<pre class="r"><code>options(warn = defaultW)</code></pre>
 </div>

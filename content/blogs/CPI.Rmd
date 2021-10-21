@@ -40,7 +40,8 @@ library(vroom)
 ```{r, out.width="100%"}
 url <- "https://fredaccount.stlouisfed.org/public/datalist/843"
 echo=FALSE
-suppressWarnings(expr, classes="warning")
+defaultW <- getOption("warn") 
+options(warn = -1) 
 
 
 # get tables that exist on FRED website
@@ -101,6 +102,8 @@ CPI_df %>%
     # Show percentages on the y-axis
     scale_y_continuous(labels=scales::percent) +
     theme_bw()
+
+options(warn = defaultW)
 
 ```
 
