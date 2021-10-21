@@ -14,7 +14,6 @@ title: CPI Analysis
 
 # How has the CPI and its components changed over the last few years?
 
-
 1. We can find [CPI components at  FRED](https://fredaccount.stlouisfed.org/public/datalist/843).
 
 2. Since the data we download is an index with various starting dates, we need to calculate the yearly, or 12-month change. To do this we need to use the `lag` function, and specifically, `year_change = value/lag(value, 12) - 1`; this means we are comparing the current month's value with that 12 months ago lag(value, 12).
@@ -38,7 +37,7 @@ library(vroom)
 ```
 
 
-```{r}
+```{r, out.width="100%"}
 url <- "https://fredaccount.stlouisfed.org/public/datalist/843"
 
 
