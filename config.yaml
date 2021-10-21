@@ -101,10 +101,10 @@ params:
         subtitle: Books
         title: Reading List
         url: blogs/Reading_List
-      - image: pic06.jpg
-        subtitle: Feugiat
-        title: Etiam
-        url: blogs/ipsum
+      - image: Flag_fr.jpg
+        subtitle: Let's dive into French History
+        title: French History
+        url: blogs/French_History
   two:
     buttonText: Browse
     enable: yes
