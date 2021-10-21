@@ -35,7 +35,7 @@ library(vroom)
 ```
 
 
-```{r, out.width="100%", results=FALSE}
+```{r, out.width="100%", results=FALSE, cache=TRUE}
 url <- "https://fredaccount.stlouisfed.org/public/datalist/843"
 echo=FALSE
 defaultW <- getOption("warn") 

@@ -17,6 +17,31 @@ At the risk of oversimplifying things, the main components of gross domestic pro
 
 The GDP data we will look at is from the [United Nations' National Accounts Main Aggregates Database](https://unstats.un.org/unsd/snaama/Downloads), which contains estimates of total GDP and its components for all countries from 1970 to today. We will look at how GDP and its components have changed over time, and compare different countries and how much each component contributes to that country's GDP.
 
+```{r load-libraries, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(GGally)
+library(readxl)
+library(here)
+library(skimr)
+library(janitor)
+library(broom)
+library(tidyquant)
+library(infer)
+library(openintro)
+library(rvest) # to scrape wikipedia page
+library(kableExtra)
+library(httr)
+library(readxl)
+library(vroom)
+library(lubridate)
+library(scales)
+library(ggtext)
+library(tidyr)
+```
+
+
 ```{r read_GDP_data}
 
 UN_GDP_data  <-  read_excel(here::here("data", "Download-GDPconstant-USD-countries.xlsx"), # Excel filename
@@ -53,7 +78,6 @@ tidy_GDP_data <-
 
 #take a glimpse at the new data frame
 glimpse(tidy_GDP_data)
-
 
 # Let us compare GDP components for these 3 countries
 country_list <- c("United States","India", "Germany")

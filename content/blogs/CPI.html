@@ -31,7 +31,6 @@ tables &lt;- url %&gt;%
   read_html() %&gt;% 
   html_nodes(css=&quot;table&quot;)
 
-
 # parse HTML tables into a dataframe called CPI 
 # Use purr::map() to create a list of all tables in URL
 CPI &lt;- map(tables, . %&gt;% 
@@ -87,4 +86,5 @@ CPI_df %&gt;%
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/blogs/CPI_files/figure-html/unnamed-chunk-1-1.png" width="100%" /></p>
 <pre class="r"><code>options(warn = defaultW)</code></pre>
+<p><img src="CPI_components.jpg" width="100%" /></p>
 </div>

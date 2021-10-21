@@ -1,0 +1,272 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: ""
+draft: false
+image: GDP.jpg
+keywords: ""
+slug: GDP
+title: GDP Analysis
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="gdp-components-over-time-and-among-countries" class="section level1">
+<h1>GDP components over time and among countries</h1>
+<p>At the risk of oversimplifying things, the main components of gross domestic product, GDP are personal consumption (C), business investment (I), government spending (G) and net exports (exports - imports). You can read more about GDP and the different approaches in calculating at the <a href="https://en.wikipedia.org/wiki/Gross_domestic_product">Wikipedia GDP page</a>.</p>
+<p>The GDP data we will look at is from the <a href="https://unstats.un.org/unsd/snaama/Downloads">United Nations’ National Accounts Main Aggregates Database</a>, which contains estimates of total GDP and its components for all countries from 1970 to today. We will look at how GDP and its components have changed over time, and compare different countries and how much each component contributes to that country’s GDP.</p>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.4     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;mosaic&#39;:
+##   method                           from   
+##   fortify.SpatialPolygonsDataFrame ggplot2</code></pre>
+<pre><code>## 
+## The &#39;mosaic&#39; package masks several functions from core packages in order to add 
+## additional features.  The original behavior of these functions should not be affected by this.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;mosaic&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:Matrix&#39;:
+## 
+##     mean</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     count, do, tally</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     cross</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     stat</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
+##     quantile, sd, t.test, var</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     max, mean, min, prod, range, sample, sum</code></pre>
+<pre><code>## 
+## Attaching package: &#39;ggthemes&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     theme_map</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<pre><code>## here() starts at /Users/adrienduverger/Desktop/LBS/Modules/R/my_website</code></pre>
+<pre><code>## 
+## Attaching package: &#39;skimr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     n_missing</code></pre>
+<pre><code>## 
+## Attaching package: &#39;janitor&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+<pre><code>## Loading required package: lubridate</code></pre>
+<pre><code>## 
+## Attaching package: &#39;lubridate&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union</code></pre>
+<pre><code>## Loading required package: PerformanceAnalytics</code></pre>
+<pre><code>## Loading required package: xts</code></pre>
+<pre><code>## Loading required package: zoo</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric</code></pre>
+<pre><code>## 
+## Attaching package: &#39;xts&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     first, last</code></pre>
+<pre><code>## 
+## Attaching package: &#39;PerformanceAnalytics&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     legend</code></pre>
+<pre><code>## Loading required package: quantmod</code></pre>
+<pre><code>## Loading required package: TTR</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
+##   method            from
+##   as.zoo.data.frame zoo</code></pre>
+<pre><code>## ══ Need to Learn tidyquant? ════════════════════════════════════════════════════
+## Business Science offers a 1-hour course - Learning Lab #9: Performance Analysis &amp; Portfolio Optimization with tidyquant!
+## &lt;/&gt; Learn more at: https://university.business-science.io/p/learning-labs-pro &lt;/&gt;</code></pre>
+<pre><code>## 
+## Attaching package: &#39;infer&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:mosaic&#39;:
+## 
+##     prop_test, t_test</code></pre>
+<pre><code>## Loading required package: airports</code></pre>
+<pre><code>## Loading required package: cherryblossom</code></pre>
+<pre><code>## Loading required package: usdata</code></pre>
+<pre><code>## 
+## Attaching package: &#39;openintro&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     dotPlot</code></pre>
+<pre><code>## The following objects are masked from &#39;package:lattice&#39;:
+## 
+##     ethanol, lsegments</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rvest&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     guess_encoding</code></pre>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:vroom&#39;:
+## 
+##     col_factor</code></pre>
+<pre><code>## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     rescale</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code>UN_GDP_data  &lt;-  read_excel(here::here(&quot;data&quot;, &quot;Download-GDPconstant-USD-countries.xlsx&quot;), # Excel filename
+                sheet=&quot;Download-GDPconstant-USD-countr&quot;, # Sheet name
+                skip=2) # Number of rows to skip</code></pre>
+<pre class="r"><code>#change the Indicator names
+UN_GDP_data[UN_GDP_data == &quot;Final consumption expenditure&quot;] &lt;- &quot;Final consumption exp&quot;
+UN_GDP_data[UN_GDP_data == &quot;Household consumption expenditure (including Non-profit institutions serving households)&quot;] &lt;- &quot;Household expenditure&quot;
+UN_GDP_data[UN_GDP_data == &quot;General government final consumption expenditure&quot;] &lt;- &quot;Government expenditure&quot;
+UN_GDP_data[UN_GDP_data == &quot;Gross capital formation&quot;] &lt;- &quot;Gross capital formation&quot;
+UN_GDP_data[UN_GDP_data == &quot;Gross fixed capital formation (including Acquisitions less disposals of valuables)&quot;] &lt;- &quot;Gross fixed capital formation&quot;
+UN_GDP_data[UN_GDP_data == &quot;Exports of goods and services&quot;] &lt;- &quot;Exports&quot;
+UN_GDP_data[UN_GDP_data == &quot;Imports of goods and services&quot;] &lt;- &quot;Imports&quot;
+UN_GDP_data[UN_GDP_data == &quot;Gross Domestic Product (GDP)&quot;] &lt;- &quot;GDP&quot;
+UN_GDP_data[UN_GDP_data == &quot;Agriculture, hunting, forestry, fishing (ISIC A-B)&quot;] &lt;- &quot;Agriculture&quot;
+UN_GDP_data[UN_GDP_data == &quot;Mining, Manufacturing, Utilities (ISIC C-E)&quot;] &lt;- &quot;Mining, Manufacturing, Utilities&quot;
+UN_GDP_data[UN_GDP_data == &quot;Manufacturing (ISIC D)&quot;] &lt;- &quot;Manufacturing&quot;
+UN_GDP_data[UN_GDP_data == &quot;Construction (ISIC F)&quot;] &lt;- &quot;Construction&quot;
+UN_GDP_data[UN_GDP_data == &quot;Wholesale, retail trade, restaurants and hotels (ISIC G-H)&quot;] &lt;- &quot;Wholesale, retail trade, hospitality&quot;
+UN_GDP_data[UN_GDP_data == &quot;Transport, storage and communication (ISIC I)&quot;] &lt;- &quot;Transport, storage and comms&quot;
+UN_GDP_data[UN_GDP_data == &quot;Other Activities (ISIC J-P)&quot;] &lt;- &quot;Other Activities&quot;
+UN_GDP_data[UN_GDP_data == &quot;Total Value Added&quot;] &lt;- &quot;Total Value Added&quot;
+
+#Express all the values in billions 
+UN_GDP_data[,4:51] &lt;- UN_GDP_data[,4:51]/10^9
+
+#Pivot the table and reshape the dataset to have GDP categories as columns
+tidy_GDP_data &lt;- 
+  pivot_longer(UN_GDP_data, cols=c(&quot;1970&quot;:&quot;2017&quot;), names_to=&quot;Year&quot;, values_to=&quot;GDP_data&quot;)
+
+#take a glimpse at the new data frame
+glimpse(tidy_GDP_data)</code></pre>
+<pre><code>## Rows: 176,976
+## Columns: 7
+## $ CountryID     &lt;dbl&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,…
+## $ Country       &lt;chr&gt; &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanistan&quot;, &quot;Afghanista…
+## $ IndicatorName &lt;chr&gt; &quot;Final consumption exp&quot;, &quot;Final consumption exp&quot;, &quot;Final…
+## $ `2018`        &lt;dbl&gt; 21336691090, 21336691090, 21336691090, 21336691090, 2133…
+## $ `2019`        &lt;dbl&gt; 24602954563, 24602954563, 24602954563, 24602954563, 2460…
+## $ Year          &lt;chr&gt; &quot;1970&quot;, &quot;1971&quot;, &quot;1972&quot;, &quot;1973&quot;, &quot;1974&quot;, &quot;1975&quot;, &quot;1976&quot;, …
+## $ GDP_data      &lt;dbl&gt; 3.068715, 2.957075, 2.886788, 3.100416, 3.328662, 3.5146…</code></pre>
+<pre class="r"><code># Let us compare GDP components for these 3 countries
+country_list &lt;- c(&quot;United States&quot;,&quot;India&quot;, &quot;Germany&quot;)</code></pre>
+<pre class="r"><code>#rearranging the vector with the countries in alphabetical order
+country_list &lt;- sort(country_list)
+
+#creating a vector with only certain GDP components
+GDP_components = c(&quot;Gross capital formation&quot;, &quot;Exports&quot;, &quot;Government expenditure&quot;, &quot;Household expenditure&quot;, &quot;Imports&quot;)
+
+#creating a data subset with only 3 given countries and the selected GDP components
+subset_data &lt;- subset(tidy_GDP_data, Country %in% country_list &amp; IndicatorName %in% GDP_components)
+
+#Create the graph
+
+#definine the axis, how we group the data and the colour scheme by GDP components
+ggplot(subset_data, aes(x=Year, y = GDP_data, group = IndicatorName, colour = IndicatorName))+ 
+  #defines the graph as a line graph
+  geom_line()+
+  #defines a theme for nicer graphics
+  theme_bw()+
+  #creates a graph per country
+  facet_wrap(~Country)+
+  #adding labels
+  labs(
+    title = &quot;GDP components over time&quot;,
+    subtitle = &quot;In constant 2010 USD&quot;,
+    color = &quot;Components of GDP&quot;
+  )+
+  #choosing a 10 year scale for the horizontal axis
+  scale_x_discrete(breaks=seq(1970,2017,by=10))+ 
+  #writing an axis title
+  scale_y_continuous(name=&quot;Billion US$&quot;)</code></pre>
+<p><img src="/blogs/GDP_files/figure-html/reproducing%20the%20plot-1.png" width="672" /></p>
+<pre class="r"><code>options(scipen=999)
+# Creating a subset of just the GDP components required in the GDP calculations
+subset_for_GDP_calculation &lt;- subset(tidy_GDP_data, IndicatorName %in% GDP_components)
+
+# Extracting just the GDP data from the original tidy_GDP_data data frame
+# Selecting the tidy_GDP data fram
+tidy_GDP_data_1 &lt;- tidy_GDP_data %&gt;%
+  # Filtering for just the total GDP component
+  filter(IndicatorName == &quot;GDP&quot;) %&gt;%
+  # Removing unnecessary columns
+  summarise(Country, Year, GDP_data)
+
+# Calculating the sum of GDP by manually adding the components
+tidy_GDP_data_2 &lt;- 
+  # Starting from the data frame containing just the GDP components
+  subset_for_GDP_calculation %&gt;%
+  # Grouping by Country and Year
+  group_by(Country, Year) %&gt;%
+  # Using pivot wider so that the data can be easily summarized by column
+  pivot_wider(names_from = IndicatorName, values_from = GDP_data) %&gt;%
+  # Manually calculating GDP using the formula (the back ticks ` are used when the column names have spaces in them)
+  summarise(sum_GDP_data = `Household expenditure` + `Government expenditure` + `Gross capital formation` + Exports - Imports)</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;Country&#39;, &#39;Year&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code># Joining the two data frames for easy comparisons based on country and year
+tidy_GDP_data_comparison &lt;- left_join(tidy_GDP_data_2, tidy_GDP_data_1, 
+                                      by= (c(&quot;Country&quot;=&quot;Country&quot;, &quot;Year&quot;=&quot;Year&quot;))) %&gt;%
+  # Calculating the percentage difference between the given GDP and the calculated GDP
+  mutate(percentage_diff = (((GDP_data-sum_GDP_data)/sum_GDP_data))*100)
+
+# Printing the result
+tidy_GDP_data_comparison</code></pre>
+<pre><code>## # A tibble: 51,120 × 5
+## # Groups:   Country, Year [10,560]
+##    Country     Year  sum_GDP_data GDP_data percentage_diff
+##    &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;           &lt;dbl&gt;
+##  1 Afghanistan 1970            NA     10.5              NA
+##  2 Afghanistan 1970            NA     10.5              NA
+##  3 Afghanistan 1970            NA     10.5              NA
+##  4 Afghanistan 1970            NA     10.5              NA
+##  5 Afghanistan 1970            NA     10.5              NA
+##  6 Afghanistan 1971            NA     10.4              NA
+##  7 Afghanistan 1971            NA     10.4              NA
+##  8 Afghanistan 1971            NA     10.4              NA
+##  9 Afghanistan 1971            NA     10.4              NA
+## 10 Afghanistan 1971            NA     10.4              NA
+## # … with 51,110 more rows</code></pre>
+<blockquote>
+<p>What is the % difference between what you calculated as GDP and the GDP figure included in the dataframe?</p>
+</blockquote>
+<p>The % difference is really depending on the country, it is sometimes above 50% and sometimes even above 100% but for most data points it is real close to the real data point.</p>
+<blockquote>
+<p>What is this last chart telling you? Can you explain in a couple of paragraphs the different dynamic among these three countries?</p>
+</blockquote>
+<p>We can see that both Germany and India have declining household expenditures, whereas the US is growing. Gross capital formation is somewhat stable for the US and slightly declining for Germany, whereas the investment into capital formation for India has spiked since the mid 2000s, reflecting the countries growth path. While India has a balance between exports and imports, Germany turned heavily towards being a net exporter since 2000, whereas the US has become a net importer. Going forward, one might expect India to turn more into a net exporter should globalization of supply chains pick up again. Germany, a saturated and stable net exporter, might want to consider starting investments into capital formation again instead of saving on all expenditures, as the economy is plateauing.</p>
+</div>

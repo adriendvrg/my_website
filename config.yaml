@@ -97,10 +97,10 @@ params:
         subtitle: GDP components analysis using R
         title: GDP Analysis
         url: blogs/GDP
-      - image: pic05.jpg
+      - image: Books.jpg
         subtitle: Books
         title: Reading List
-        url: blogs/ipsum
+        url: blogs/Reading_List
       - image: pic06.jpg
         subtitle: Feugiat
         title: Etiam
